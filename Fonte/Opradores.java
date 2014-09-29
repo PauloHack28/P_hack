@@ -1,4 +1,9 @@
 /**
+ * 
+ */
+package packateP_hack;
+
+/**
  * @author Paulo
  *
  */
@@ -51,3 +56,4 @@ private double d;
 		return d;
 	}
 }
+

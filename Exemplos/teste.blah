@@ -1,0 +1,10 @@
+Exemplo de codigo fonte da linguagem Blah
+Nesse arquivo devem o programador vai
+escrever o codigo do programa.
+Esse texto aqui e apenas um exemplo.
+Nao tem comando algum aqui.
+Ex.:
+i = 3
+j = 9;
+j = i + 2;
+print i

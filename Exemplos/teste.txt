@@ -1,0 +1,10 @@
+Exe:mplo de cód85igo fonte da linguagem Blah
+Nesse arquivo devem o progra456mador vai
+escrever o código 6545do progr:ama.
+Esse texto aqui é apenas um exemplo.
+Não tem comando algum aqui.
+Ex.:
+i = 3
+j = 9;
+j = i + 2;
+print i

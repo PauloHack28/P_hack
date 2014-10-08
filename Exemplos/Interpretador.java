@@ -1,46 +1,35 @@
-/**
- * Exemplo de interpretador.
- *
- * Esse c√≥digo √© um exemplo de interpretador para a linguagem 'Blah'. Esse programa
- * n√£o faz qualquer interpreta√ß√£o, ele apenas l√™ o conte√∫do de um arquivo que foi
- * passado pela linha de comando.
- *
- * Por Fernando Bevilacqua <fernando.bevilacqua@uffs.edu.br>
- */
 
-class Interpretador {
-    private String linhas[];
-    
-    public void interpreta(String l[]) {
-        this.linhas = l;
-              
-        for(int i = 0; i < this.linhas.length; i++) {
-            if(this.linhas[i] != null) {
+public class Interpretador {
+	private String arquivo[];
+	private Variaveis v[]=new Variaveis[20];
+		
+	//MÈtodo que faz a leitura linha por linha.
+	public void interpretaCod (String linhas[]){
+		this.arquivo = linhas;
+		int i,pos;
+		pos=0;//Ser· o indice do vetor de vari·veis.		
+		
+		for (i=0;i<=this.arquivo.length && this.arquivo[i]!= null;i++){
+			// Dentro do laÁo, selecionamos uma linha por vez para interpretar, em busca de Totens que auxiliem nos processos..
 			
-			            	//Criando um vetor baseado na STRING, separando todos os caracteres que   
-                //possuem um " |:?[0-9]+|:" entre eles.  
-            String[] s = this.linhas[i].split(" ");  
-			for(int j = 0; j < s.length; j++)
-         /* 
-              Resultado: 
-              s[0] = 4 
-              s[1] = 5 
-              s[2] = 10 
-              s[3] = 40 
-             */
-                  
-            //Imprimindo 4 ou o primeiro item da string   
-        	//for (j=0;j<6;j++)//{
-                System.out.println(""+s[j]);
-            //}
+			// 1∞ SE. Caso a linha contenha a palavra Var, entende-se como criaÁ„o de vari·vel do tipo Var:nome;
+			if (this.arquivo[i].contains("Var")){
+				v[pos]=new Variaveis();
+				v[pos].criaVariavel(this.arquivo[i]);
+				pos++;
+			}
+			//2∞ SE. Caso a linha possua atribuiÁ„o de valor do tipo a=2;
+			else if (this.arquivo[i].contains("=")){
+				int end;
+				end = Variaveis.nomePesquisa(this.arquivo[i],v,pos);
+				if (end == -1) break;
+				v[end].setValor(this.arquivo[i]);
+			}
 			
-			
-			
-			
-			
-            	// TODO: interpretar a linha
-                //System.out.println("Linha " + (i + 1) + ": " + this.linhas[i]);
-            }
-        }
-    }
+			//Caso seja encontrado fim_do_programa, o interpretador finaliza a leitura do arquivo.
+			else if (this.arquivo[i].contains("fim_do_programa")){
+				break;
+			}
+		}			
+	}	
 }
